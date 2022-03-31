@@ -19,7 +19,7 @@
 
 
   - name: find all
-    shell: 'find / 2>/dev/null'
+    shell: 'find /  2>/dev/null | grep -v sys | grep -v proc'
     register: find_result
 
   - name: show find_result
