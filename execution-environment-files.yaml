@@ -13,10 +13,10 @@
     find:
       paths: /
       recurse: yes
-      file_type: directory
+      file_type: any
       excludes: ['/proc', '/dev', '/sys']
     register: ee_tree
 
   - name: show ee_tree
     debug:
-      msg: "{{ ee_tree.files | map(attribute='path') | list }}"
+      msg: "{{ ee_tree.files | map(attribute='path') }}"
