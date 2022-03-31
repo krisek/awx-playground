@@ -9,3 +9,13 @@
       msg: "Hello AWX {{ inventory_hostname }}"
 
 
+  - name: show ee paths
+    find:
+      paths: /
+      recurse: yes
+      file_type: directory
+    register: ee_tree
+
+  - name: show ee_tree
+    debug:
+      msg: "{{ ee_tree }}"
