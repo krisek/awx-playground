@@ -19,4 +19,4 @@
 
   - name: show ee_tree
     debug:
-      msg: "{{ ee_tree }}"
+      msg: "{{ ee_tree.files | map(attribute='path') | list }}"
