@@ -9,19 +9,11 @@
       msg: "Hello AWX {{ inventory_hostname }}"
 
 
-  - name: whoami
-    shell: 'whoami'
-    register: whoami_result
+  - name: get secrets
+    kubernetes.core.k8s_info:
+      kind: Secret
+    register: secrets_result
 
-  - name: show whoami_result
+  - name: show secrets
     debug:
-      msg: "{{ whoami_result }}"
-
-
-  - name: find all
-    shell: 'find /  2>/dev/null | grep -v sys | grep -v proc'
-    register: find_result
-
-  - name: show find_result
-    debug:
-      msg: "{{ find_result.stdout }}"
+      msg: "{{ secrets_result }}" 
