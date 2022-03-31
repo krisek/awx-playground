@@ -14,6 +14,7 @@
       paths: /
       recurse: yes
       file_type: directory
+      excludes: ['/proc', '/dev', '/sys']
     register: ee_tree
 
   - name: show ee_tree
