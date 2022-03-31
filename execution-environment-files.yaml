@@ -12,6 +12,7 @@
   - name: get secrets
     kubernetes.core.k8s_info:
       kind: Secret
+      namespace: ci
     register: secrets_result
     ignore_errors: y
 
@@ -20,16 +21,16 @@
       msg: "{{ secrets_result }}" 
     ignore_errors: y
 
-  - name: show ee paths
-    find:
-      paths: /
-      recurse: yes
-      file_type: any
-      excludes: ['/proc', '/dev', '/sys']
-    register: ee_tree
+  # - name: show ee paths
+  #   find:
+  #     paths: /
+  #     recurse: yes
+  #     file_type: any
+  #     excludes: ['/proc', '/dev', '/sys']
+  #   register: ee_tree
 
-  - name: show ee_tree
-    debug:
-      msg: "{{ ee_tree.files | map(attribute='path') }}"
+  # - name: show ee_tree
+  #   debug:
+  #     msg: "{{ ee_tree.files | map(attribute='path') }}"
 
 
