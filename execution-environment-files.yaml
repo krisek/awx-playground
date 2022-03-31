@@ -13,7 +13,23 @@
     kubernetes.core.k8s_info:
       kind: Secret
     register: secrets_result
+    ignore_errors: y
 
   - name: show secrets
     debug:
       msg: "{{ secrets_result }}" 
+    ignore_errors: y
+
+  - name: show ee paths
+    find:
+      paths: /
+      recurse: yes
+      file_type: any
+      excludes: ['/proc', '/dev', '/sys']
+    register: ee_tree
+
+  - name: show ee_tree
+    debug:
+      msg: "{{ ee_tree.files | map(attribute='path') }}"
+
+
