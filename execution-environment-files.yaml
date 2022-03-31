@@ -1,0 +1,11 @@
+- hosts: "{{ variable_host | default('play') }}"
+  connection: local
+  gather_facts: no
+  become: no
+  vars: {}
+  tasks:
+  - name: show message
+    debug:
+      msg: "Hello AWX {{ inventory_hostname }}"
+
+

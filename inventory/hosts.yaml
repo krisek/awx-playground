@@ -1,0 +1,7 @@
+all:
+  vars:
+    var1: value
+  hosts:
+    play:
+    alma:
+    beta:
